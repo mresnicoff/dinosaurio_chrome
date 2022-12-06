@@ -147,6 +147,39 @@ body{
     background: url(img/bullet.png) no-repeat;
     background-size: 5px 2px;
 }
+.general{
+    display:flex;
+    flex-direction: column;
+}
+.botones{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #584040;
+}
+.botones{
+    margin:50px;
+
+
+}
+.espaciadora{
+
+width: 50%;
+height: 24px;
+text-align: center;
+background-color: white;
+padding:5px;
+margin-left: 100px;
+}
+.dispara{
+
+width: 10%;
+height: 24px;
+text-align: center;
+background-color: white;
+padding:5px;
+
+}
 
 @keyframes animarDino{
     from{
@@ -161,7 +194,7 @@ body{
     </style>
 </head>
 <body>
-
+<div class="`general">
     <div class="contenedor">
 
         <div class="suelo"></div>
@@ -170,9 +203,13 @@ body{
 
         <div class="score">0</div>
 
+        <div class="game-over">GAME OVER</div>
     </div>
 
-    <div class="game-over">GAME OVER</div>
+    <div class="botones">
+    <div class="espaciadora" id="1">Saltar</div><div class="dispara" id="2">P</div>
+    </div>
+</div>
     
 
 <script>
@@ -186,6 +223,7 @@ if(document.readyState === "complete" || document.readyState === "interactive"){
     setTimeout(Init, 1);
 }else{
     document.addEventListener("DOMContentLoaded", Init); 
+   
 }
 
 function Init() {
@@ -250,6 +288,10 @@ function Start() {
     textoScore = document.querySelector(".score");
     dino = document.querySelector(".dino");
     document.addEventListener("keydown", HandleKeyDown);
+    var escuchadora = document.getElementById('1');
+    escuchadora.addEventListener('click',HandleKeyDown);
+    var otraEescuchadora = document.getElementById('2');
+    otraEescuchadora.addEventListener('click',HandleKeyDown);
 }
 
 function Update() {
@@ -273,6 +315,8 @@ function HandleKeyDown(ev){
         Saltar();
     }
 else if(ev.keyCode==80){disparar()}
+else if(ev.target.id=='1'){Saltar()}
+else if(ev.target.id=='2'){disparar()}
 }
 
 function Saltar(){
