@@ -485,7 +485,8 @@ function DetectarColision() {
 
 function destruirObstaculo() {
     if(!obstaculos[0]){return}
-for(var i=0;i<balas.length; i++){
+    if(!balas[0]){return}
+
 
 
             if(IsCollision(balas[0], obstaculos[0], 1, 1, 1, 1)) {
@@ -494,7 +495,7 @@ for(var i=0;i<balas.length; i++){
             balas[0].parentNode.removeChild(balas[0]);
             balas.splice(0, 1);;
             }}
-        }
+        
     
 
 
